@@ -23,21 +23,24 @@ For orders:  [('apples', 3.0)] best shop is shop2
 from __future__ import print_function
 import shop
 
-def shopSmart(orderList, fruitShops):
-    """
-        orderList: List of (fruit, numPound) tuples
-        fruitShops: List of FruitShops
-    """
-    "*** YOUR CODE HERE ***"
-    ans = ["name", 99999]
+class shopSmart:
+    def __init__(self, orderList, fruitShops):
+        self.bestPick = "placeholder"
+        """
+            orderList: List of (fruit, numPound) tuples
+            fruitShops: List of FruitShops
+        """
+        "*** YOUR CODE HERE ***"
+        ans = 99999
 
-    for fruitShop in fruitShops:
-        temp = fruitShop.getPriceOfOrder(orderList)
-        if (ans[1] > temp):
-            ans[0] = fruitShop.getName()
-            ans[1] = temp
+        for fruitShop in fruitShops:
+            temp = fruitShop.getPriceOfOrder(orderList)
+            if (ans > temp):
+                self.bestPick = fruitShop.getName()
+                ans = temp
 
-    return ans[0]
+    def getName(self):
+        return self.bestPick
 
 
 if __name__ == '__main__':
@@ -49,7 +52,7 @@ if __name__ == '__main__':
     shop2 = shop.FruitShop('shop2', dir2)
     shops = [shop1, shop2]
     print("For orders ", orders, ", the best shop is",
-          shopSmart(orders, shops))
+          shopSmart(orders, shops).getName())
     orders = [('apples', 3.0)]
     print("For orders: ", orders, ", the best shop is",
-          shopSmart(orders, shops))
+          shopSmart(orders, shops).getName())
