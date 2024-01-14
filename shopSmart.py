@@ -31,13 +31,13 @@ class shopSmart:
             fruitShops: List of FruitShops
         """
         "*** YOUR CODE HERE ***"
-        ans = 99999
+        cost = 99999
 
         for fruitShop in fruitShops:
-            temp = fruitShop.getPriceOfOrder(orderList)
-            if (ans > temp):
+            tempCost = fruitShop.getPriceOfOrder(orderList)
+            if (cost > tempCost):
                 self.bestPick = fruitShop.getName()
-                ans = temp
+                cost = tempCost
 
     def getName(self):
         return self.bestPick
